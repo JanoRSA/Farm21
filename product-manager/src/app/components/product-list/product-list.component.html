@@ -1,4 +1,6 @@
 <div *ngFor="let product of products">
-  <app-product-item [product]="product"> </app-product-item>
+  {{ product.name }}
+
+  <i (click)="openProduct(product)" class="bi bi-pencil-square"></i>
 </div>
 

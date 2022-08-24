@@ -1,3 +1,31 @@
-<div>
-  {{ product.name }} - {{ product.price }}
-</div>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>{{product ? 'Edit Product' : 'Save Product'}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div id="container">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="product.name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input [(ngModel)]="product.description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Price</ion-label>
+        <ion-input [(ngModel)]="product.price"></ion-input>
+      </ion-item>
+    </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="success">Save</ion-button>
+    <ion-button color="danger">Cancel</ion-button>
+  </ion-toolbar>
+</ion-footer>
