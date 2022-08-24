@@ -21,29 +21,21 @@ export class ApiService {
       .pipe(catchError(this.handleError));
   }
 
-  update(url: string, body): Observable<any> {
+  put(url: string, body): Observable<any> {
     let requestUrl = this.apiUrl + url;
     return this.http
       .put(requestUrl, body)
       .pipe(catchError(this.handleError));
   }
 
-  list(url: string) {
+  get(url: string) {
     const requestUrl = this.apiUrl + url;
     return this.http.get<any[]>(requestUrl)
     .pipe(
       catchError(this.handleError)
     );
   }
-
-  fetch(url: string, id: number) {
-    let requestUrl = this.apiUrl + url;
-    return this.http.get<any[]>(requestUrl)
-    .pipe(
-      catchError(this.handleError)
-    );
-  }
-
+  
   handleError(error:any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

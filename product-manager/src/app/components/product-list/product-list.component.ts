@@ -25,7 +25,7 @@ export class ProductListComponent implements OnInit {
   }
 
   loadProducts() {
-    this.api.list('products').subscribe((products: Product[]) => {
+    this.api.get('products').subscribe((products: Product[]) => {
       this.products = products;
     });
   }
@@ -38,7 +38,7 @@ export class ProductListComponent implements OnInit {
     modal.onDidDismiss().then((result) => {
       if (result.data) {
         const product = <Product>result.data;
-        this.api.update('products/' + product.id, product).subscribe(product => {
+        this.api.put('products/' + product.id, product).subscribe(product => {
 
         });
       }
