@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Product } from 'src/app/models/Products';
 
 @Component({
@@ -10,15 +11,15 @@ export class ProductItemComponent implements OnInit {
 
   @Input() product: Product = null;
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {}
 
   save() {
-
+    this.modalCtrl.dismiss(this.product);
   }
 
   cancel() {
-    
+    this.modalCtrl.dismiss(null);
   }
 }

@@ -36,8 +36,11 @@ export class ProductListComponent implements OnInit {
       componentProps: { product: product },
     });
     modal.onDidDismiss().then((result) => {
-      if (result.data.Description && result.data.Description !== 'All Vehicles') {
-        
+      if (result.data) {
+        const product = <Product>result.data;
+        this.api.update('products', product).subscribe(product => {
+
+        });
       }
     });
     return await modal.present();
