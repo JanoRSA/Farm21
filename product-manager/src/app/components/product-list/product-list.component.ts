@@ -35,17 +35,23 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  async openProduct(product: Product) {
+  async openProduct(product: Product, isNew = false) {
     const modal = await this.modalCtrl.create({
       component: ProductItemComponent,
-      componentProps: { product: product },
+      componentProps: { product: product, isNew: isNew },
     });
     modal.onDidDismiss().then((result) => {
       if (result.data) {
         const product = <Product>result.data;
-        this.api.put('products/' + product.id, product).subscribe(product => {
-
-        });
+        if (product.id) {
+          this.api.put('products/' + product.id, product).subscribe(product => {});
+        } else {
+          this.api.post('products', product).subscribe(product => {
+            if (product) {
+              this.products.push(<Product>product);
+            }
+          });
+        }     
       }
     });
     return await modal.present();
@@ -75,5 +81,11 @@ export class ProductListComponent implements OnInit {
     });
 
     await alert.present();
+  }
+
+  addNewProduct() {
+    let newProduct = new Product();
+    newProduct.stock_id = 1;
+    this.openProduct(newProduct, true);
   }
 }

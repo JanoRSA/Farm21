@@ -10,6 +10,7 @@ import { Product } from 'src/app/models/Products';
 export class ProductItemComponent implements OnInit {
 
   @Input() product: Product = null;
+  @Input() isNew = false;
 
   constructor(private modalCtrl: ModalController) { }
 
