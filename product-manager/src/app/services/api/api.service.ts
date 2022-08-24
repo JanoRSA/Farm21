@@ -24,7 +24,7 @@ export class ApiService {
   update(url: string, body): Observable<any> {
     let requestUrl = this.apiUrl + url;
     return this.http
-      .post(requestUrl, body)
+      .put(requestUrl, body)
       .pipe(catchError(this.handleError));
   }
 
