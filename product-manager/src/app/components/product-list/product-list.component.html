@@ -1,6 +1,16 @@
-<div *ngFor="let product of products">
-  {{ product.name }}
-
-  <i (click)="openProduct(product)" class="bi bi-pencil-square"></i>
-</div>
-
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="table-header">Name</ion-col>
+      <ion-col class="table-header" size="4">Description</ion-col>
+      <ion-col class="table-header">Price</ion-col>
+      <ion-col class="table-header" size="2"></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let product of products">
+      <ion-col>{{ product.name }}</ion-col>
+      <ion-col size="4">{{ product.description }}</ion-col>
+      <ion-col>{{ product.price }}</ion-col>
+      <ion-col size="2"><i (click)="openProduct(product)" class="bi bi-pencil-square"></i></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
