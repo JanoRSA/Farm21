@@ -12,7 +12,7 @@
       <ion-col size="4">{{ product.description }}</ion-col>
       <ion-col size="2">{{ product.price }}</ion-col>
       <ion-col size="2"><i (click)="openProduct(product)" class="bi bi-pencil-square"></i></ion-col>
-      <ion-col size="1"><i class="bi bi-trash"></i></ion-col>
+      <ion-col size="1"><i (click)="removeProduct(product)" class="bi bi-trash"></i></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

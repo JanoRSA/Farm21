@@ -35,6 +35,13 @@ export class ApiService {
       catchError(this.handleError)
     );
   }
+
+  delete(url: string): Observable<any> {
+    let requestUrl = this.apiUrl + url;
+    return this.http
+      .delete(requestUrl)
+      .pipe(catchError(this.handleError));
+  }
   
   handleError(error:any) {
     let errorMessage = '';
